@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns
 
 urlpatterns = patterns('quickbooks.views',
     (r'^request_oauth_token/?$',    'request_oauth_token'),
@@ -6,4 +6,3 @@ urlpatterns = patterns('quickbooks.views',
     (r'^blue_dot_menu/?$',          'blue_dot_menu'),
     (r'^disconnect/?$',             'disconnect'),
 )
-
