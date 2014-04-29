@@ -6,3 +6,4 @@ urlpatterns = patterns('quickbooks.views',
     (r'^blue_dot_menu/?$',          'blue_dot_menu'),
     (r'^disconnect/?$',             'disconnect'),
 )
+
