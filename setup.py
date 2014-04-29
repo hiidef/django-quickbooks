@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
 
-    name = "django-quickbooks",
+    name = "QuickBooks",
 
     version = '0.2.2',
 
