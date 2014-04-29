@@ -3,9 +3,9 @@ from setuptools import setup, find_packages
 
 setup(
 
-    name = "django-quickbooks-online",
+    name = "django-quickbooks",
 
-    version = '0.2.1',
+    version = '0.2.2',
 
     packages = find_packages(),
 
