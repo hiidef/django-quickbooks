@@ -15,11 +15,11 @@ setup(
     # metadata for upload to PyPI
     author = "Hans Kuder",
     author_email = "hans@hiidef.com",
-    maintainer = "Joshua Sorenson",
-    maintainer_email = "josh@grue.io",
+    maintainer = "Brent Hagany",
+    maintainer_email = "brent@hiidef.com",
     description = "Django Quickbooks App",
     license = "MIT License",
     keywords = "django quickbooks intuit",
-    url = "http://github.com/grue/django-quickbooks-online",
+    url = "http://github.com/hiidef/django-quickbooks",
 
 )
