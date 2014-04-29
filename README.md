@@ -2,7 +2,7 @@
 django-quickbooks - An app for communicating with Quickbooks via the Quickbooks API
 ==========================================================================================
 
-This project was forked from [django-quickbooks-online](https://github.com/grue/django-quickbooks-online), originally developed by us, [hiidef](https://github.com/hiidef), with contributions from [setaris](https://github.com/setaris).
+This project was made current by updates from the fork at [django-quickbooks-online](https://github.com/grue/django-quickbooks-online) which contains contributions from [setaris](https://github.com/setaris). django-quickbooks was originally developed by us, [hiidef](https://github.com/hiidef).
 
 django-quickbooks handles communicating with the Quickbooks API. Using
 this app, you can perform CRUD operations on any of the object classes
