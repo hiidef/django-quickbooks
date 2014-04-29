@@ -1,16 +1,14 @@
 ==========================================================================================
-django-quickbooks-online - An app for communicating with Quickbooks via the Quickbooks API
+django-quickbooks - An app for communicating with Quickbooks via the Quickbooks API
 ==========================================================================================
-
-[![Build Status](https://travis-ci.org/grue/django-quickbooks-online.png)](https://travis-ci.org/grue/django-quickbooks-online)
 
 This project was forked from [django-quickbooks-online](https://github.com/grue/django-quickbooks-online), originally developed by us, [hiidef](https://github.com/hiidef), with contributions from [setaris](https://github.com/setaris).
 
-django-quickbooks-online handles communicating with the Quickbooks API. Using
+django-quickbooks handles communicating with the Quickbooks API. Using
 this app, you can perform CRUD operations on any of the object classes
 supported by both Quickbooks Desktop and Quickbooks Online.
 
-django-quickbooks-online knows very little about the actual API schema. 
+django-quickbooks knows very little about the actual API schema.
 
 Installation
 ============
