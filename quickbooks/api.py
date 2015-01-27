@@ -9,6 +9,7 @@ APPCENTER_URL_BASE = 'https://appcenter.intuit.com/api/v1/'
 
 QUICKBOOKS_DESKTOP_V3_URL_BASE = 'https://quickbooks.api.intuit.com/v3'
 QUICKBOOKS_ONLINE_V3_URL_BASE = 'https://quickbooks.api.intuit.com/v3'
+QUICKBOOKS_ONLINE_V3_SANDBOX_URL_BASE = 'https://sandbox-quickbooks.api.intuit.com/v3'
 
 
 class QuickbooksError(Exception):
@@ -37,7 +38,7 @@ class DuplicateItemError(ApiError):
 
 class QuickbooksApi(object):
     """ This is an interface to the QBD and QBO v3 api."""
-    def __init__(self, owner_or_token):
+    def __init__(self, owner_or_token, sandbox=False):
         if isinstance(owner_or_token, User):
             self.token = QuickbooksToken.objects.filter(user=owner_or_token).first()
         elif isinstance(owner_or_token, QuickbooksToken):
@@ -54,8 +55,10 @@ class QuickbooksApi(object):
         self.session = session
         self.realm_id = self.token.realm_id
         self.data_source = self.token.data_source
+        online_url_base = QUICKBOOKS_ONLINE_V3_SANDBOX_URL_BASE if sandbox else QUICKBOOKS_ONLINE_V3_URL_BASE
         self.url_base = {'QBD': QUICKBOOKS_DESKTOP_V3_URL_BASE,
-                         'QBO': QUICKBOOKS_ONLINE_V3_URL_BASE}[self.token.data_source]
+                         'QBO': online_url_base
+                        }[self.token.data_source]
 
     def _appcenter_request(self, url, retries=3):
         full_url = APPCENTER_URL_BASE + url
