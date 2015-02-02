@@ -37,6 +37,19 @@ Installation
 
         ENCRYPTED_FIELD_KEYS_DIR = "/path/to/keys"
 
+==============
+Steps 7-END no longer apply to new apps.
+
+Hi Brian,
+
+You are doing everything right but the bluedotmenu script has issues/bugs and it was deprecated/legacy and therefore made optional last year. What you are seeing below is a known bug which you had also reported.
+menuProxy was used to point to the code page which handled blue dot menu calls but since blue dot menu itself has issues, menuproxy is also of no use.
+Please remove the blue dot menu code as this bug will not be resolved.
+
+Thanks,
+Nimisha
+==============
+
 7. Add the setup javascript (example below assumes your namespace is
    'quickbooks' and that you have a template context variable 'base_url' (e.g.,
    http://example.com):
