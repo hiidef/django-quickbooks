@@ -97,7 +97,7 @@ class QuickbooksApi(object):
          }
          """
         constructed_url = "{}/company/{}/{}/{}".format(self.url_base, self.realm_id, object_type, entity_id)
-        return self.session.get(constructed_url).json()
+        return self.session.get(constructed_url.lower()).json()
 
     def query(self, query):
         """
@@ -108,6 +108,7 @@ class QuickbooksApi(object):
         """
         # [todo] - add error handling for v3 query
         constructed_url = "{}/company/{}/query?query={}".format(self.url_base, self.realm_id, urllib.quote(query))
+        # not using lower() on the constructed_url due to the query
         return self.session.get(constructed_url).json()
 
     def create(self, object_type, object_body):
