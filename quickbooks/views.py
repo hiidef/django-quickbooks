@@ -96,7 +96,6 @@ def blue_dot_menu(request):
     html = request.session.get(BLUE_DOT_CACHE_KEY)
     if not html:
         html = request.session[BLUE_DOT_CACHE_KEY] = QuickbooksApi(request.user).app_menu()
-    print html
     return HttpResponse(html)
 
 
