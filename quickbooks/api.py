@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from quickbooks.models import QuickbooksToken
 
-APPCENTER_URL_BASE = 'https://appcenter.intuit.com/api/v3/'
+APPCENTER_URL_BASE = 'https://appcenter.intuit.com/api/v1/'
 
 QUICKBOOKS_DESKTOP_V3_URL_BASE = 'https://quickbooks.api.intuit.com/v3'
 QUICKBOOKS_ONLINE_V3_URL_BASE = 'https://quickbooks.api.intuit.com/v3'
