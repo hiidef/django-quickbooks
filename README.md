@@ -38,7 +38,7 @@ Installation
         ENCRYPTED_FIELD_KEYS_DIR = "/path/to/keys"
 
 ==============
-Steps 7-END no longer apply to new apps.
+The following steps no longer apply to new apps...
 
 Hi Brian,
 
@@ -48,9 +48,11 @@ Please remove the blue dot menu code as this bug will not be resolved.
 
 Thanks,
 Nimisha
+
+Legacy Steps
 ==============
 
-7. Add the setup javascript (example below assumes your namespace is
+1. Add the setup javascript (example below assumes your namespace is
    'quickbooks' and that you have a template context variable 'base_url' (e.g.,
    http://example.com):
 
@@ -60,10 +62,10 @@ Nimisha
             grantUrl: '{{ base_url }}{% url quickbooks:quickbooks.views.request_oauth_token %}'
         });</script>
 
-8. Add the connect button HTML (perhaps in user preferences):
+2. Add the connect button HTML (perhaps in user preferences):
 
         <ipp:connectToIntuit></ipp:connectToIntuit>
 
-9. Add the blue dot menu HTML (must be visible on every page once connected):
+3. Add the blue dot menu HTML (must be visible on every page once connected):
 
         <ipp:blueDot></ipp:blueDot>
