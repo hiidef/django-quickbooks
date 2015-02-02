@@ -66,6 +66,8 @@ class QuickbooksApi(object):
         for retry_i in range(retries + 1):
             content = self.session.get(full_url).content
 
+        print self.session.get(full_url)
+
         # [todo] - Add some error handling for _appcenter_requests.
         # https://developer.intuit.com/docs/0025_quickbooksapi/0053_auth_auth/platform_api#AppMenu
         # intuit's documentation is a bit vauge:
