@@ -74,13 +74,13 @@ def get_access_token(request):
         realm_id=realm_id,
         data_source=data_source)
 
-    # Cache blue dot menu
-    try:
-        request.session[BLUE_DOT_CACHE_KEY] = None
-        blue_dot_menu(request)
-    except AttributeError:
-        raise Exception('The sessions framework must be installed for this ' +
-                        'application to work.')
+    # Cache blue dot menu.  Blue dot menu no longer works, see README
+    # try:
+    #     request.session[BLUE_DOT_CACHE_KEY] = None
+    #     blue_dot_menu(request)
+    # except AttributeError:
+    #     raise Exception('The sessions framework must be installed for this ' +
+    #                     'application to work.')
 
     # Let everyone else know we conneted
     qb_connected.send(None, token=token)
