@@ -36,7 +36,7 @@ class DuplicateNameError(ApiError):
     pass
 
 
-ERRORS {
+ERRORS = {
     '6240': DuplicateNameError
 }
 
