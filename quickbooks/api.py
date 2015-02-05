@@ -32,8 +32,13 @@ class ApiError(QuickbooksError):
     pass
 
 
-class DuplicateItemError(ApiError):
+class DuplicateNameError(ApiError):
     pass
+
+
+ERRORS {
+    '6240': DuplicateNameError
+}
 
 
 class QuickbooksApi(object):
@@ -97,7 +102,8 @@ class QuickbooksApi(object):
          }
          """
         constructed_url = "{}/company/{}/{}/{}".format(self.url_base, self.realm_id, object_type, entity_id)
-        return self.session.get(constructed_url.lower()).json()
+        response = self.session.get(constructed_url.lower())
+        return error_check(response)
 
     def query(self, query):
         """
@@ -109,22 +115,44 @@ class QuickbooksApi(object):
         # [todo] - add error handling for v3 query
         constructed_url = "{}/company/{}/query?query={}".format(self.url_base, self.realm_id, urllib.quote(query))
         # not using lower() on the constructed_url due to the query
-        return self.session.get(constructed_url).json()
+        response = self.session.get(constructed_url)
+        return error_check(response)
 
     def create(self, object_type, object_body):
         # [todo] - add error handling for v3 create
         # [todo] - validate that the object_body is a proper json blob
         constructed_url = "{}/company/{}/{}".format(self.url_base, self.realm_id, object_type)
-        return self.session.post(constructed_url.lower(), object_body).json()
+        response = self.session.post(constructed_url.lower(), object_body)
+        return error_check(response)
 
     def delete(self, object_type, object_body):
         # [todo] - add error handling for v3 delete
         # [todo] - validate that the object_body is a proper json blob
         constructed_url = "{}/company/{}/{}?operation=delete".format(self.url_base, self.realm_id, object_type)
-        return self.session.post(constructed_url.lower(), object_body).json()
+        response = self.session.post(constructed_url.lower(), object_body)
+        return error_check(response)
+
 
     def update(self, object_type, object_body):
         # [todo] - add error handling for v3 update
         # [todo] - validate that the object_body is a proper json blob
         constructed_url = "{}/company/{}/{}?operation=update".format(self.url_base, self.realm_id, object_type)
-        return self.session.post(constructed_url.lower(), object_body).json()
+        response = self.session.post(constructed_url.lower(), object_body)
+        return error_check(request)
+
+def error_check(response):
+    # list of codes:
+    # https://developer.intuit.com/docs/0100_accounting/0300_developer_guides/error_handling
+    if response.status_code == 400:
+        resp_json = response.json()
+        if 'Fault' in resp_json.json():
+            errors = qbitem['Fault'].get('Error', [])
+            for error in errors:
+                if error['code'] = '6240':
+                    raise DuplicateNameError
+                raise ERRORS.get(error['code'], ApiError)
+            raise ApiError
+    if response.status_code == 401:
+        raise AuthenticationFailure
+
+    return response.json()
