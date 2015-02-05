@@ -145,8 +145,8 @@ def error_check(response):
     # https://developer.intuit.com/docs/0100_accounting/0300_developer_guides/error_handling
     if response.status_code == 400:
         resp_json = response.json()
-        if 'Fault' in resp_json.json():
-            errors = qbitem['Fault'].get('Error', [])
+        if 'Fault' in resp_json:
+            errors = resp_json['Fault'].get('Error', [])
             for error in errors:
                 raise ERRORS.get(error['code'], ApiError)
             raise ApiError
