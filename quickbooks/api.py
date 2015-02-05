@@ -148,8 +148,6 @@ def error_check(response):
         if 'Fault' in resp_json.json():
             errors = qbitem['Fault'].get('Error', [])
             for error in errors:
-                if error['code'] = '6240':
-                    raise DuplicateNameError
                 raise ERRORS.get(error['code'], ApiError)
             raise ApiError
     if response.status_code == 401:
