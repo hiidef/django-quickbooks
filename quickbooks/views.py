@@ -86,7 +86,7 @@ def get_access_token(request):
     qb_connected.send(None, token=token)
 
     return render_to_response('oauth_callback.html',
-                              {'complete_url': settings.QUICKBOOKS['ACCESS_COMPLETE_URL']})
+                              {'complete_url': settings.QUICKBOOKS['DISCONNECT_URL']})
 
 
 @login_required
