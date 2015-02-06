@@ -32,6 +32,10 @@ class ApiError(QuickbooksError):
     pass
 
 
+class DuplicateItemError(ApiError):
+    pass
+
+
 class DuplicateNameError(ApiError):
     pass
 
