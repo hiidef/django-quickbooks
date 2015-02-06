@@ -24,7 +24,8 @@ Installation
             'CONSUMER_KEY': 'consumer_key_from_quickbooks',
             'CONSUMER_SECRET': 'consumer_secret_from_quickbooks',
             'OAUTH_CALLBACK_URL': string_or_callable,
-            'ACCESS_COMPLETE_URL': string
+            'ACCESS_COMPLETE_URL': string,
+            'DISCONNECT_URL': string
         }
 
 5. You'll need to set up you Keyczar keychain now:
