@@ -82,11 +82,11 @@ def get_access_token(request):
     #     raise Exception('The sessions framework must be installed for this ' +
     #                     'application to work.')
 
-    # Let everyone else know we conneted
+    # Let everyone else know we connected
     qb_connected.send(None, token=token)
 
     return render_to_response('oauth_callback.html',
-                              {'complete_url': settings.QUICKBOOKS['DISCONNECT_URL']})
+                              {'complete_url': settings.QUICKBOOKS['ACCESS_COMPLETE_URL']})
 
 
 @login_required
@@ -112,4 +112,4 @@ def disconnect(request):
         pass
 
     request.user.quickbookstoken_set.all().delete()
-    return HttpResponseRedirect(settings.QUICKBOOKS['ACCESS_COMPLETE_URL'])
+    return HttpResponseRedirect(settings.QUICKBOOKS['DISCONNECT_URL'])
