@@ -152,7 +152,7 @@ def error_check(response):
         if 'Fault' in resp_json:
             errors = resp_json['Fault'].get('Error', [])
             for error in errors:
-                raise ERRORS.get(error['code'], ApiError)
+                raise ERRORS.get(error['code'], ApiError)(resp_json)
             raise ApiError
     if response.status_code == 401:
         raise AuthenticationFailure
