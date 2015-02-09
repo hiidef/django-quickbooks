@@ -40,7 +40,12 @@ class DuplicateNameError(ApiError):
     pass
 
 
+class FeatureNotSupportedError(ApiError):
+    pass
+
+
 ERRORS = {
+    '5030': FeatureNotSupportedError,
     '6240': DuplicateNameError
 }
 
