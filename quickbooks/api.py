@@ -52,7 +52,7 @@ ERRORS = {
 
 class QuickbooksApi(object):
     """ This is an interface to the QBD and QBO v3 api."""
-    def __init__(self, owner_or_token, sandbox=False):
+    def __init__(self, owner_or_token, sandbox=False, get_level=True):
         if isinstance(owner_or_token, User):
             self.token = QuickbooksToken.objects.filter(user=owner_or_token).first()
         elif isinstance(owner_or_token, QuickbooksToken):
@@ -73,6 +73,20 @@ class QuickbooksApi(object):
         self.url_base = {'QBD': QUICKBOOKS_DESKTOP_V3_URL_BASE,
                          'QBO': online_url_base
                         }[self.token.data_source]
+        self.level = None
+        if get_level:
+            # level is actually a string.
+            # For QBO, can be one of:
+            # QuickBooks Online Simple, QuickBooks Online Essentials,
+            # Quickbooks Online Plus
+            try:
+                # find subscription level from list of key-value pairs
+                name_values = self.query("SELECT * FROM CompanyInfo")['QueryResponse']['CompanyInfo'][0]['NameValue']
+                for pairing in name_values:
+                    if pairing['Name'] == 'OfferingSku':
+                        self.level = pairing['Value']
+            except:
+                pass
 
     def _appcenter_request(self, url, retries=3):
         full_url = APPCENTER_URL_BASE + url
