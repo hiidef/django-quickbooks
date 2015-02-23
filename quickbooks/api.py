@@ -77,7 +77,7 @@ class QuickbooksApi(object):
         if get_level:
             # level is actually a string.
             # For QBO, can be one of:
-            # QuickBooks Online Simple, QuickBooks Online Essentials,
+            # QuickBooks Online Simple Start, QuickBooks Online Essentials,
             # Quickbooks Online Plus
             try:
                 # find subscription level from list of key-value pairs
