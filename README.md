@@ -28,7 +28,7 @@ Installation
             'DISCONNECT_URL': string,
             'FEATURES': {
                 'InventoryItem': {
-                    'QuickBooks Online Essentials'
+                    'QuickBooks Online Plus'
                 }
             },
         }
