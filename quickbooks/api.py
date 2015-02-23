@@ -88,6 +88,11 @@ class QuickbooksApi(object):
             except:
                 pass
 
+    def feature_enabled(self, feature):
+        if not self.level:
+            return False
+        return feature in settings.QUICKBOOKS['FEATURES'].get('InventoryItem', {feature})
+
     def _appcenter_request(self, url, retries=3):
         full_url = APPCENTER_URL_BASE + url
 
